@@ -17,8 +17,10 @@ router.post(
 );
 
 router.get('/confirm_message', user.confirmMessage);
+router.get('/confirmEmail/:id', wrapAsync(user.confirmEmail));
 
 router.get('/dashboard', isLoggedIn, user.dashboardPage);
+router.put('/dashboard', isLoggedIn, wrapAsync(user.updateProfile));
 
 router.get('/logout', user.logoutUser);
 
