@@ -19,13 +19,9 @@ const helmet = require('helmet');
 
 const User = require('./models/user');
 
-// const paintingRouter = require('./router/paintingRouter')
-// const reviewRouter = require('./router/reviewRouter')
 const userRouter = require('./router/userRouter');
 
 const secret = process.env.SECRET;
-const googleID = process.env.GOOGLE_CLIENT_ID;
-const googleSecret = process.env.GOOGLE_CLIENT_SECRET;
 const dbUse = process.env.DB_USE;
 // 'mongodb://localhost:27017/Canvas'
 mongoose
@@ -92,8 +88,6 @@ app.use((req, res, next) => {
 	next();
 });
 
-// app.use('/painting', paintingRouter)
-// app.use('/painting/:id/reviews', reviewRouter)
 app.use('/', userRouter);
 
 app.get('/', (req, res) => {

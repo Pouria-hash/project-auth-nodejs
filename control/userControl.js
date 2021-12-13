@@ -27,6 +27,18 @@ module.exports.loginUser = (req, res) => {
 	res.redirect(foundPath);
 };
 
+//GET Request
+// مسیر مربوط به صفحه داشبورد
+module.exports.dashboardPage = (req, res) => {
+	res.render('user/dashboard');
+};
+
+// GET Request
+// مسیر مربوط به صفحه موفقیت امیز بودن ارسال ایمیل فعال سازی
+module.exports.confirmMessage = (req, res) => {
+	res.render('user/confirmMessage');
+};
+
 module.exports.logoutUser = (req, res) => {
 	req.logOut();
 	req.flash('success', 'GoodBye');

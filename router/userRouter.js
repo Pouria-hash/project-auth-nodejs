@@ -1,40 +1,25 @@
 const express = require('express');
 const router = express.Router();
-const wrapAsync = require('../utily/wrapAsync')
-const User = require('../models/user');
+const wrapAsync = require('../utily/wrapAsync');
+const { isLoggedIn, isAuth } = require('../utily/middleware');
 const passport = require('passport');
-const user = require('../control/userControl')
+const user = require('../control/userControl');
 
+router.get('/register', isAuth, user.registerForm);
 
+router.post('/register', wrapAsync(user.registr));
 
-// router.get('/fakeuser', async (req, res) => {
-//     const user = new User({ username: 'pouria', email: 'pooria@gmail.com' })
-//     const newUser = await User.register(user, 'monkey')
-//     console.log(newUser)
-//     res.send('ok')
-// })
+router.get('/login', isAuth, user.loginForm);
+router.post(
+	'/login',
+	passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }),
+	user.loginUser
+);
 
-router.get('/register', user.registerForm)
+router.get('/confirm_message', user.confirmMessage);
 
-router.post('/register', wrapAsync(user.registr))
+router.get('/dashboard', isLoggedIn, user.dashboardPage);
 
-router.get('/login', user.loginForm)
+router.get('/logout', user.logoutUser);
 
-// google sign in (broken)
-
-// router.get("/auth/google", passport.authenticate("google", {
-//     scope: ["profile", "email"]
-// }));
-
-// router.get("/api/auth/google/redirect", passport.authenticate('google', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
-//     req.flash('success', 'Wellcom Back')
-//     res.redirect('/painting')
-// });
-
-router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), user.loginUser)
-
-
-
-router.get('/logout', user.logoutUser)
-
-module.exports = router
+module.exports = router;
