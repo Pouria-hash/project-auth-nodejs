@@ -60,10 +60,14 @@ module.exports.confirmEmail = async (req, res, next) => {
 	}
 };
 
+//GET Request
+// -------- کنترلر مربوط به صفحه لاگین ---------//
 module.exports.loginForm = (req, res) => {
 	res.render('user/login');
 };
 
+//POST Request
+//--------- کنترلر مربوط به لاگین کاربر ---------//
 module.exports.loginUser = (req, res, next) => {
 	passport.authenticate('local', function(err, user, info) {
 		if (err) {
@@ -88,13 +92,13 @@ module.exports.loginUser = (req, res, next) => {
 };
 
 //GET Request
-// مسیر مربوط به صفحه داشبورد
+//-------- کنترلر مربوط به صفحه داشبورد -----------//
 module.exports.dashboardPage = (req, res) => {
 	res.render('user/dashboard');
 };
 
 //PUT Request
-// مسیر مربوط به اپدیت کردن اطلاعات کاربر
+//---------- کنترلر مربوط به اپدیت کردن اطلاعات کاربر ---------- //
 module.exports.updateProfile = async (req, res) => {
 	const { email, name, password, newPassword } = req.body;
 	const username = req.user.username;
@@ -127,7 +131,7 @@ module.exports.updateProfile = async (req, res) => {
 };
 
 // GET Request
-// مسیر مربوط به صفحه موفقیت امیز بودن ارسال ایمیل فعال سازی
+//-------- مسیر مربوط به صفحه موفقیت امیز بودن ارسال ایمیل فعال سازی ------//
 module.exports.confirmMessage = (req, res) => {
 	res.render('user/confirmMessage');
 };
@@ -165,7 +169,7 @@ module.exports.forgetPasswordSendEmail = async (req, res) => {
 	}
 };
 //GET Request
-
+//----------- کنترلر مربوط به چک کردن ریست پسورد ---------- //
 module.exports.resetPasswordCheck = async (req, res) => {
 	try {
 		//استخراج ای دی ذخیره شده در توکن کاربر
@@ -184,13 +188,15 @@ module.exports.resetPasswordCheck = async (req, res) => {
 	}
 };
 
+//POST Request
+//-------- کنترلر مربوط به ریست پسورد --------- //
 module.exports.resetPassword = async (req, res) => {
 	try {
 		const { password } = req.body;
 		const { id } = req.params;
 
 		const user = await User.findById(id);
-		console.log(password);
+
 		await user.setPassword(password);
 		await user.save();
 
@@ -202,6 +208,8 @@ module.exports.resetPassword = async (req, res) => {
 	}
 };
 
+//GET Request
+//----------- مسیر مربوط به لاگ اوت کاربر ---------- //
 module.exports.logoutUser = (req, res) => {
 	req.logOut();
 	req.flash('success', 'GoodBye');
