@@ -100,6 +100,13 @@ app.get('/', (req, res) => {
 	res.render('home');
 });
 
+app.get('/about', (req, res) => {
+	res.render('about');
+});
+app.get('/contact', (req, res) => {
+	res.render('contact');
+});
+
 app.use('*', (req, res, next) => {
 	next(new ExpressError('Page not found', 404));
 });

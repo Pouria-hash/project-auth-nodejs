@@ -1,7 +1,5 @@
 body {
 	height: 100%;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.568)),
-		url('https://images.unsplash.com/photo-1562028957-4273d6530045?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
