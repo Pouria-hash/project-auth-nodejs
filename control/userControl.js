@@ -59,35 +59,35 @@ module.exports.loginForm = (req, res) => {
 	res.render('user/login');
 };
 
-module.exports.loginUser = (req, res, next) => {
-	passport.authenticate('local', function(err, user, info) {
-		if (err) {
-			return next(err);
-		}
-		if (!user) {
-			req.flash('error', info.message);
-			return res.redirect('/login');
-		}
-		if (!user.active) {
-			req.flash('error', 'account is not active');
-			return res.redirect('/login');
-		}
-		req.logIn(user, function(err) {
-			if (err) {
-				return next(err);
-			}
-			req.flash('success', `wellcome ${user.name}`);
-			return res.redirect('/dashboard');
-		});
-	})(req, res, next);
-};
-
-// module.exports.loginUser = (req, res) => {
-// 	const foundPath = req.session.returnTo || '/';
-// 	delete req.session.returnTo;
-// 	req.flash('success', 'Wellcome Back');
-// 	res.redirect(foundPath);
+// module.exports.loginUser = (req, res, next) => {
+// 	passport.authenticate('local', function(err, user, info) {
+// 		if (err) {
+// 			return next(err);
+// 		}
+// 		if (!user) {
+// 			req.flash('error', info.message);
+// 			return res.redirect('/login');
+// 		}
+// 		if (!user.active) {
+// 			req.flash('error', 'account is not active');
+// 			return res.redirect('/login');
+// 		}
+// 		req.logIn(user, function(err) {
+// 			if (err) {
+// 				return next(err);
+// 			}
+// 			req.flash('success', `wellcome ${user.name}`);
+// 			return res.redirect('/dashboard');
+// 		});
+// 	})(req, res, next);
 // };
+
+module.exports.loginUser = (req, res) => {
+	const foundPath = req.session.returnTo || '/';
+	delete req.session.returnTo;
+	req.flash('success', 'Wellcome Back');
+	res.redirect(foundPath);
+};
 
 //GET Request
 // مسیر مربوط به صفحه داشبورد
