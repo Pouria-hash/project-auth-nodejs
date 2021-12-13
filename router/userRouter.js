@@ -10,11 +10,7 @@ router.get('/register', isAuth, user.registerForm);
 router.post('/register', wrapAsync(user.registr));
 
 router.get('/login', isAuth, user.loginForm);
-router.post(
-	'/login',
-	passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }),
-	user.loginUser
-);
+router.post('/login', user.loginUser);
 
 router.get('/confirm_message', user.confirmMessage);
 router.get('/confirmEmail/:id', wrapAsync(user.confirmEmail));
