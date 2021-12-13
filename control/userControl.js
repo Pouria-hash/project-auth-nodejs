@@ -65,9 +65,11 @@ module.exports.loginUser = (req, res, next) => {
 			return next(err);
 		}
 		if (!user) {
+			req.flash('error', 'username or password incorrect');
 			return res.redirect('/login');
 		}
 		if (!user.active) {
+			req.flash('error', 'account is not active');
 			return res.redirect('/login');
 		}
 		req.logIn(user, function(err) {
