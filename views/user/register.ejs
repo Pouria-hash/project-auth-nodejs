@@ -1,34 +1,98 @@
 <% layout('./layouts/boilerplate') %>
-    <div class="container">
-        <div class="row" id="registerForm">
-            <div class="col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-                <div class="card userForm">
-                    <img src="https://images.unsplash.com/photo-1535673774336-ef95d2851cf3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80"
-                        class="card-img-top cardImg" alt="">
-                    <div class="card-body">
-                        <h1 class="card-title">Register Form</h1>
-                        <form action="/register" novalidate class="validate-form" method="POST">
-                            <div>
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" name="username" autofocus class="mb-1 form-control" id="username"
-                                    required>
-                            </div>
-                            <div>
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" class="mb-1 form-control" id="password">
-                            </div>
-                            <div>
-                                <label for="email" class="form-label">Email</label>
-                                <input type="text" name="email" class="form-control mb-3" id="email">
-                            </div>
 
-                            <div class="d-grid">
 
-                                <button class="btn btn-success">Register</button>
+    <div class="row d-flex justify-content-center aligen-items-center">
+        <div class="col-md-6">
+            <div class="card shadow " style='border-radius: 10px; overflow: hidden'>
+                <div class="d-flex justify-content-center align-items-center" style='height: 130px;
+            background: linear-gradient(to top , #e04d398c , #e44e3bc7) ;
+            background-size: cover;'>
+                    <h2 class="text-white">Register Form</h2>
+
+
+                </div>
+                <div class="p-3">
+                    <form action="/register" method="POST" class="validation-form" novalidate>
+                        <div class='row'>
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="username">Username</label>
+                                    <input class="form-control" autofocus type="text" name="username" id="username"
+                                        required>
+                                    <div class="valid-feedback">
+                                        Looks Good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please type a valid Username.
+                                    </div>
+                                </div>
+
                             </div>
-                        </form>
-                    </div>
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="name">Name</label>
+                                    <input class="form-control" type="text" name="name" id="name" required>
+                                    <div class="valid-feedback">
+                                        Looks Good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please type a valid Username.
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="password">Password</label>
+                                    <input class="form-control" type="password" name="password" id="password" required>
+                                    <div class="valid-feedback">
+                                        Looks Good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please type a valid password.
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="confirm-password">Confirm Password</label>
+                                    <input class="form-control" type="password" name="confirmPassword"
+                                        id="confirm-password" required>
+                                    <div class="valid-feedback">
+                                        Looks Good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please type a valid password.
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="email">Email</label>
+                            <input class="form-control" type="email" name="email" id="email" required>
+                            <div class="valid-feedback">
+                                Looks Good!
+                            </div>
+                            <div class=" invalid-feedback">
+                                Please type a valid Email.
+                            </div>
+                        </div>
+                        <div>
+                            <p>Have an account? <a href='/login'>Login</a></p>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary mt-3 px-5">Register</button>
+                        </div>
                 </div>
             </div>
+
+            </form>
         </div>
+    </div>
+    </div>
     </div>

@@ -14,7 +14,6 @@ const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 const passport = require('passport');
 const localStrategy = require('passport-local');
-// const GoogleStrategy = require("passport-google-oauth20").Strategy
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 
